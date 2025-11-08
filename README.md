@@ -13,9 +13,30 @@ Configuration personnalisée pour Arch Linux avec Hyprland, optimisée pour clav
 
 ## 🚀 Installation
 
+### Installation automatique (recommandée)
+
 ```bash
 # Cloner le dépôt
-git clone https://github.com/VOTRE_USERNAME/dotfiles.git ~/dotfiles
+git clone https://github.com/blyscop/dotfiles.git ~/dotfiles
+
+# Lancer le script d'installation
+cd ~/dotfiles
+./install.sh
+```
+
+Le script d'installation va :
+- Créer un backup de vos configurations existantes
+- Créer des liens symboliques vers les configurations du dépôt
+- Rendre les scripts exécutables
+- Vous guider pour appliquer les changements
+
+### Installation manuelle
+
+Si vous préférez installer manuellement :
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/blyscop/dotfiles.git ~/dotfiles
 
 # Créer des liens symboliques
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
@@ -31,6 +52,21 @@ ln -sf ~/dotfiles/.config/kitty ~/.config/kitty
 ln -sf ~/dotfiles/.config/rofi ~/.config/rofi
 ln -sf ~/dotfiles/.config/dunst ~/.config/dunst
 ```
+
+## 🔄 Mise à jour
+
+Pour mettre à jour vos configurations depuis GitHub :
+
+```bash
+cd ~/dotfiles
+./update.sh
+```
+
+Le script de mise à jour va :
+- Sauvegarder vos modifications locales (stash)
+- Récupérer les dernières modifications depuis GitHub
+- Restaurer vos modifications locales
+- Proposer de recharger Hyprland
 
 ## ⌨️ Keybindings Hyprland (Clavier BÉPO)
 
@@ -105,6 +141,9 @@ ln -sf ~/dotfiles/.config/dunst ~/.config/dunst
 
 ```
 dotfiles/
+├── install.sh                     # Script d'installation automatique
+├── update.sh                      # Script de mise à jour depuis GitHub
+├── README.md                      # Documentation
 ├── .config/
 │   ├── hypr/
 │   │   ├── hyprland.conf          # Configuration principale
