@@ -1,0 +1,11 @@
+# Fichiers temporaires et cache
+*.tmp
+*.log
+*.cache
+*~
+.DS_Store
+
+# Fichiers spécifiques à ne pas versionner
+.config/*/cache/
+.config/*/logs/
+.config/hypr/hyprland.log
