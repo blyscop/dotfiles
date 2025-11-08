@@ -68,6 +68,49 @@ Le script de mise à jour va :
 - Restaurer vos modifications locales
 - Proposer de recharger Hyprland
 
+## 💾 Backup et Restauration
+
+### Créer un backup complet
+
+**IMPORTANT**: Utilisez ceci avant d'installer des environnements qui pourraient écraser vos configurations (comme DankLinux, autre rice, etc.)
+
+```bash
+cd ~/dotfiles
+./backup.sh
+```
+
+Le script de backup va :
+- Sauvegarder toutes vos configurations importantes (Hyprland, Waybar, Rofi, Dunst, shell, GTK/Qt, etc.)
+- Créer une archive compressée datée
+- Générer un script de restauration rapide inclus dans le backup
+- Stocker tout dans `~/.dotfiles_backups/`
+
+### Restaurer depuis un backup
+
+```bash
+cd ~/dotfiles
+./restore.sh
+```
+
+Le script vous proposera de choisir parmi les backups disponibles et restaurera vos configurations. Il crée automatiquement un backup de sécurité de vos configurations actuelles avant la restauration.
+
+### Cas d'usage : Tester DankLinux
+
+Si vous voulez essayer DankLinux sans perdre vos keybindings BÉPO :
+
+```bash
+# 1. Créer un backup complet
+cd ~/dotfiles
+./backup.sh
+
+# 2. Installer DankLinux
+curl -fsSL https://install.danklinux.com | sh
+
+# 3. Si DankLinux ne vous plaît pas, restaurez vos configs
+cd ~/dotfiles
+./restore.sh
+```
+
 ## ⌨️ Keybindings Hyprland (Clavier BÉPO)
 
 ### Gestion des fenêtres et sessions
@@ -143,6 +186,8 @@ Le script de mise à jour va :
 dotfiles/
 ├── install.sh                     # Script d'installation automatique
 ├── update.sh                      # Script de mise à jour depuis GitHub
+├── backup.sh                      # Script de backup complet (avant install DankLinux, etc.)
+├── restore.sh                     # Script de restauration depuis backup
 ├── README.md                      # Documentation
 ├── .config/
 │   ├── hypr/
